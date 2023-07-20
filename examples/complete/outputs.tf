@@ -2,22 +2,9 @@
 # Outputs
 ##############################################################################
 
-output "region" {
-  description = "The region all resources were provisioned in"
-  value       = var.region
+output "secret_group_id" {
+  description = "ID of the created Secret Group"
+  value       = module.secrets_manager_group_acct.secret_group_id
 }
 
-output "prefix" {
-  description = "The prefix used to name all provisioned resources"
-  value       = var.prefix
-}
-
-output "resource_group_name" {
-  description = "The name of the resource group used"
-  value       = var.resource_group
-}
-
-output "resource_tags" {
-  description = "List of resource tags"
-  value       = var.resource_tags
-}
+##############################################################################

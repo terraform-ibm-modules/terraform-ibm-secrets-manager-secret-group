@@ -1,19 +1,25 @@
 variable "ibmcloud_api_key" {
   type        = string
-  description = "The IBM Cloud API Key"
+  description = "The IBM Cloud API Token"
   sensitive   = true
 }
 
 variable "region" {
   type        = string
-  description = "Region to provision all resources created by this example"
+  description = "Region to deploy resources in"
   default     = "us-south"
+}
+
+variable "sm_service_plan" {
+  type        = string
+  description = "Description of service plan to be used to provision Secrets Manager"
+  default     = "trial"
 }
 
 variable "prefix" {
   type        = string
-  description = "Prefix to append to all resources created by this example"
-  default     = "complete"
+  description = "Prefix for name of all resource created by this example"
+  default     = "test-sm-sg-module"
 }
 
 variable "resource_group" {
@@ -26,4 +32,16 @@ variable "resource_tags" {
   type        = list(string)
   description = "Optional list of tags to be added to created resources"
   default     = []
+}
+
+variable "existing_sm_instance_guid" {
+  type        = string
+  description = "Existing Secrets Manager GUID. If not provided an new instance will be provisioned"
+  default     = null
+}
+
+variable "existing_sm_instance_region" {
+  type        = string
+  description = "Required if value is passed into var.existing_sm_instance_guid"
+  default     = null
 }
