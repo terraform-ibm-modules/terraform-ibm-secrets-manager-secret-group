@@ -11,7 +11,7 @@ import (
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 )
 
-// Resource groups are maintained https://github.ibm.com/GoldenEye/ge-dev-account-management
+// Use existing resource group
 const resourceGroup = "geretain-test-secrets-manager"
 const defaultExampleTerraformDir = "examples/complete"
 
