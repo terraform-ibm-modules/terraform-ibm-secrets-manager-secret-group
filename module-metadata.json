@@ -1,12 +1,112 @@
 {
   "path": ".",
-  "variables": {},
-  "outputs": {},
+  "variables": {
+    "region": {
+      "name": "region",
+      "type": "string",
+      "description": "Region which the Secret Manager is deployed.",
+      "required": true,
+      "source": [
+        "ibm_sm_secret_group.secret_group.region"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 5
+      },
+      "cloud_data_type": "region",
+      "immutable": true,
+      "computed": true
+    },
+    "secret_group_description": {
+      "name": "secret_group_description",
+      "type": "string",
+      "description": "Description of the Secret Group to be created.",
+      "required": true,
+      "source": [
+        "ibm_sm_secret_group.secret_group.description"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 17
+      },
+      "max_length": 1024,
+      "matches": "(.*?)"
+    },
+    "secret_group_name": {
+      "name": "secret_group_name",
+      "type": "string",
+      "description": "Name of the Secret Group to be created.",
+      "required": true,
+      "source": [
+        "ibm_sm_secret_group.secret_group.name"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 13
+      },
+      "min_length": 2,
+      "max_length": 64,
+      "matches": "[A-Za-z0-9][A-Za-z0-9]*(?:_*-*\\\\.*[A-Za-z0-9]+)*$"
+    },
+    "secrets_manager_guid": {
+      "name": "secrets_manager_guid",
+      "type": "string",
+      "description": "Instance ID of Secrets Manager instance in which the Secret will be added.",
+      "required": true,
+      "source": [
+        "ibm_sm_secret_group.secret_group.instance_id"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 9
+      },
+      "cloud_data_type": "resource_instance",
+      "immutable": true
+    }
+  },
+  "outputs": {
+    "secret_group_id": {
+      "name": "secret_group_id",
+      "description": "ID of the created Secret Group",
+      "value": "ibm_sm_secret_group.secret_group.secret_group_id",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 5
+      },
+      "type": "TypeString"
+    }
+  },
   "required_core": [
     "\u003e= 1.3.0"
   ],
-  "required_providers": {},
-  "managed_resources": {},
+  "required_providers": {
+    "ibm": {
+      "source": "IBM-Cloud/ibm",
+      "version_constraints": [
+        "\u003e= 1.51.0"
+      ]
+    }
+  },
+  "managed_resources": {
+    "ibm_sm_secret_group.secret_group": {
+      "mode": "managed",
+      "type": "ibm_sm_secret_group",
+      "name": "secret_group",
+      "attributes": {
+        "description": "secret_group_description",
+        "instance_id": "secrets_manager_guid",
+        "name": "secret_group_name",
+        "region": "region"
+      },
+      "provider": {
+        "name": "ibm"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 8
+      }
+    }
+  },
   "data_resources": {},
   "module_calls": {}
 }
