@@ -1,4 +1,4 @@
-# Secrets Manager Secret module
+# Secrets Manager Secret Group module
 
 [![Graduated (Supported)](https://img.shields.io/badge/Status-Graduated%20(Supported)-brightgreen)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
@@ -7,14 +7,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
-This module creates a secret in an IBM Secrets Manager secrets group.
-
-The module supports the following secret types:
-
-- [Arbitrary](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-arbitrary-secrets&interface=ui)
-- [User credentials](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui)
-- [Imported Certificate](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-certificates&interface=api#import-certificates)
-
+This module creates a secret group in an IBM Secrets Manager secrets group.
 
 ## Usage
 
@@ -24,8 +17,9 @@ provider "ibm" {
   region           = "us-south"
 }
 
-module "secret_group" {
+module "sm-secret-group-module" {
   source  = "terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/ibm"
+  region                   = var.region
   version = "latest" # Replace "latest" with a release version to lock into a specific release
   resource_group_id    = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
   region               = "us-south"
