@@ -7,7 +7,7 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
-This module creates a secret group in an IBM Secrets Manager secrets group.
+This module creates a secret group in an IBM Secrets Manager secrets instance.
 
 ## Usage
 
@@ -18,7 +18,7 @@ provider "ibm" {
 }
 
 module "sm-secret-group-module" {
-  source  = "terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/ibm"
+  source  = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
   region                   = var.region
   version = "latest" # Replace "latest" with a release version to lock into a specific release
   resource_group_id    = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
