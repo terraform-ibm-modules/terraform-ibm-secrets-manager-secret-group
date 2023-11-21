@@ -3,6 +3,6 @@
   "region": "us-south",
   "resource_tags": $TAGS,
   "prefix": $PREFIX,
-  "existing_sm_instance_guid": $SM_GUID
+  "existing_sm_instance_guid": $SM_GUID,
   "existing_sm_instance_region": $SM_REGION
 }
