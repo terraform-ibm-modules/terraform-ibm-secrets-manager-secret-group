@@ -13,7 +13,7 @@ import (
 
 // Use existing resource group
 const resourceGroup = "geretain-test-secrets-manager"
-const defaultExampleTerraformDir = "examples/complete"
+const basicExampleTerraformDir = "examples/basic"
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
@@ -48,10 +48,10 @@ func setupOptions(t *testing.T, terraformDir string, prefix string) *testhelper.
 	return options
 }
 
-func TestRunDefaultExample(t *testing.T) {
+func TestRunBasicExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, defaultExampleTerraformDir, "def-sm-group")
+	options := setupOptions(t, basicExampleTerraformDir, "sm-group")
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -61,7 +61,7 @@ func TestRunDefaultExample(t *testing.T) {
 func TestRunUpgrade(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, defaultExampleTerraformDir, "def-sm-group-upg")
+	options := setupOptions(t, basicExampleTerraformDir, "sm-group-upg")
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {

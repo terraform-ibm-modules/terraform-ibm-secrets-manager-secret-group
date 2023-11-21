@@ -7,20 +7,18 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
-This module creates a secret group in an IBM Secrets Manager secrets instance.
+This module creates a secret group in an IBM Secrets Manager instance.
 
 ## Usage
-
 ```hcl
 provider "ibm" {
-  ibmcloud_api_key = ""
+  ibmcloud_api_key = "XXXXXXXXXX"
   region           = "us-south"
 }
 
 module "sm-secret-group-module" {
-  source  = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  region                   = var.region
-  version = "latest" # Replace "latest" with a release version to lock into a specific release
+  source               = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
+  version              = "latest" # Replace "latest" with a release version to lock into a specific release
   resource_group_id    = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
   region               = "us-south"
 }
@@ -42,7 +40,7 @@ You need the following permissions to run this module.
 <!-- BEGIN EXAMPLES HOOK -->
 ## Examples
 
-- [ Complete example](examples/complete)
+- [ Complete example](examples/basic)
 <!-- END EXAMPLES HOOK -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ### Requirements
@@ -81,7 +79,7 @@ No modules.
 <!-- BEGIN EXAMPLES HOOK -->
 ## Examples
 
-- [ Complete example](examples/complete)
+- [ Complete example](examples/basic)
 <!-- END EXAMPLES HOOK -->
 
 <!-- BEGIN CONTRIBUTING HOOK -->
