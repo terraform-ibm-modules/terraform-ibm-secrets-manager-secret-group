@@ -1,4 +1,4 @@
-# Complete example
+# Basic example
 
 A simple example that shows how to provision a secret group in an IBM Secrets Manager instance.
 

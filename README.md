@@ -18,7 +18,7 @@ provider "ibm" {
 
 module "sm-secret-group-module" {
   source               = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  version              = "latest" # Replace "latest" with a release version to lock into a specific release
+  version              = "X.X.X" # Replace "X.X.X" with a release version to lock into a specific release
   resource_group_id    = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
   region               = "us-south"
 }
@@ -73,7 +73,7 @@ No modules.
 <!-- BEGIN EXAMPLES HOOK -->
 ## Examples
 
-- [ Complete example](examples/basic)
+- [ Basic example](examples/basic)
 <!-- END EXAMPLES HOOK -->
 
 <!-- BEGIN CONTRIBUTING HOOK -->
