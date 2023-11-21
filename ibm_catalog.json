@@ -1,0 +1,51 @@
+{
+  "products": [
+    {
+      "name": "terraform-ibm-secrets-manager-secret-group",
+      "label": "Secrets Manager secret group module",
+      "product_kind": "module",
+      "tags": [
+        "dev_ops",
+        "target_terraform",
+        "terraform",
+        "module"
+      ],
+      "keywords": [
+        "terraform",
+        "secrets",
+        "secret group",
+        "secrets manager"
+      ],
+      "short_description": "This module creates a secret group in an IBM Secrets Manager instance.",
+      "long_description": "This module creates a secret group (https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-best-practices-organize-secrets#best-practices-secret-groups) in an IBM Cloud Secrets Manager instance.\n\n## Usage\n```hcl\nprovider \"ibm\" {\n  ibmcloud_api_key = \"XXXXXXXXXX\"\n  region           = \"us-south\"\n}\n\nmodule \"sm-secret-group-module\" {\n  # Replace \"X.X.X\" with a release version to lock into a specific release\n  source              = \"https://cm.globalcatalog.cloud.ibm.com/api/v1-beta/offering/source?archive=tgz&kind=terraform&name=terraform-ibm-secrets-manager-secret-group&version=X.X.X\"\n  resource_group_id   = \"xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX\"\n  region              = \"us-south\"\n}\n```",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/blob/main/README.md",
+      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/documentation/main/icons/secrets-manager-icon.svg",
+      "provider_name": "IBM",
+      "features": [
+        {
+          "title": "Creates a secret group",
+          "description": "Creates a secret group in a Secrets Manager instance."
+        }
+      ],
+      "flavors": [
+        {
+          "label": "Basic",
+          "name": "basic",
+          "working_directory": "examples/basic",
+          "architecture": {
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Basic example",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/documentation/main/icons/ModuleExampleDiagram.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "A simple example to create a secret group in a Secrets Manager instance."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

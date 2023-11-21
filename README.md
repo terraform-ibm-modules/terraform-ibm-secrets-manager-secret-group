@@ -1,4 +1,4 @@
-# Secrets Manager Secret Group module
+# Secrets Manager secret group module
 
 [![Graduated (Supported)](https://img.shields.io/badge/Status-Graduated%20(Supported)-brightgreen)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
@@ -7,20 +7,18 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 
-This module creates a secret group in an IBM Secrets Manager secrets instance.
+This module creates a secret group in an IBM Cloud Secrets Manager instance. For more information, see [Best practices for organizing secrets and assigning access](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-best-practices-organize-secrets#best-practices-secret-groups).
 
 ## Usage
-
 ```hcl
 provider "ibm" {
-  ibmcloud_api_key = ""
+  ibmcloud_api_key = "XXXXXXXXXX"
   region           = "us-south"
 }
 
 module "sm-secret-group-module" {
-  source  = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  region                   = var.region
-  version = "latest" # Replace "latest" with a release version to lock into a specific release
+  source               = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
+  version              = "X.X.X" # Replace "X.X.X" with a release version to lock into a specific release
   resource_group_id    = "xxXXxxXXxXxXXXXxxXxxxXXXXxXXXXX"
   region               = "us-south"
 }
@@ -38,12 +36,6 @@ You need the following permissions to run this module.
         - `Editor` platform access
         - `Manager` service access
 
-
-<!-- BEGIN EXAMPLES HOOK -->
-## Examples
-
-- [ Complete example](examples/complete)
-<!-- END EXAMPLES HOOK -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ### Requirements
 
@@ -81,7 +73,7 @@ No modules.
 <!-- BEGIN EXAMPLES HOOK -->
 ## Examples
 
-- [ Complete example](examples/complete)
+- [ Basic example](examples/basic)
 <!-- END EXAMPLES HOOK -->
 
 <!-- BEGIN CONTRIBUTING HOOK -->
