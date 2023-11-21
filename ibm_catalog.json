@@ -40,7 +40,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/documentation/main/icons/ModuleExampleDiagram.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "A simple example to create a secret group in an IBM Secrets Manager instance."
+                "description": "A simple example to create a secret group in a Secrets Manager instance."
               }
             ]
           }
