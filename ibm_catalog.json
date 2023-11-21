@@ -24,7 +24,7 @@
       "features": [
         {
           "title": "Creates a secret group",
-          "description": "Creates a secret group in an IBM Secrets Manager instance."
+          "description": "Creates a secret group in a Secrets Manager instance."
         }
       ],
       "flavors": [
