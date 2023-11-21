@@ -36,12 +36,6 @@ You need the following permissions to run this module.
         - `Editor` platform access
         - `Manager` service access
 
-
-<!-- BEGIN EXAMPLES HOOK -->
-## Examples
-
-- [ Complete example](examples/basic)
-<!-- END EXAMPLES HOOK -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ### Requirements
 
