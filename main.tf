@@ -10,5 +10,5 @@ resource "ibm_sm_secret_group" "secret_group" {
   description   = var.secret_group_description
   region        = var.region
   instance_id   = var.secrets_manager_guid
-  endpoint_type = var.service_endpoints
+  endpoint_type = var.endpoint_type
 }

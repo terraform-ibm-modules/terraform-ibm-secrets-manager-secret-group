@@ -18,7 +18,7 @@ variable "secret_group_description" {
   type        = string
   description = "Description of the Secret Group to be created."
 }
-variable "service_endpoints" {
+variable "endpoint_type" {
   type        = string
   description = "The service endpoint type to communicate with the provided secrets manager instance. Possible values are `public` or `private`"
   default     = "public"
