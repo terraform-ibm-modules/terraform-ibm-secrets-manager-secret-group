@@ -1,8 +1,3 @@
-locals {
-  sm_guid   = var.existing_sm_instance_guid == null ? ibm_resource_instance.secrets_manager[0].guid : var.existing_sm_instance_guid
-  sm_region = var.existing_sm_instance_region == null ? var.region : var.existing_sm_instance_region
-}
-
 ##################################################################
 ## Create RG
 ##################################################################
@@ -19,18 +14,16 @@ module "resource_group" {
 ## Create prerequisite.  Secrets Manager and Secret Group
 ##################################################################
 
-resource "ibm_resource_instance" "secrets_manager" {
-  count             = var.existing_sm_instance_guid == null ? 1 : 0
-  name              = "${var.prefix}-sm-instance"
-  service           = "secrets-manager"
-  plan              = "trial"
-  service_endpoints = "private"
-  location          = var.region
-  resource_group_id = module.resource_group.resource_group_id
-  tags              = var.resource_tags
-  timeouts {
-    create = "20m" # Extending provisioning time to 20 minutes
-  }
+module "secrets_manager" {
+  source               = "terraform-ibm-modules/secrets-manager/ibm"
+  version              = "1.18.13"
+  resource_group_id    = module.resource_group.resource_group_id
+  region               = var.region
+  secrets_manager_name = "${var.prefix}-sm"
+  sm_service_plan      = "trial"
+  allowed_network      = "private-only"
+  endpoint_type        = "private"
+  sm_tags              = var.resource_tags
 }
 
 ##################################################################
@@ -39,9 +32,10 @@ resource "ibm_resource_instance" "secrets_manager" {
 
 module "secrets_manager_group_acct" {
   source               = "../.."
-  region               = local.sm_region
-  secrets_manager_guid = local.sm_guid
+  region               = var.region
+  secrets_manager_guid = module.secrets_manager.secrets_manager_guid
   #tfsec:ignore:general-secrets-no-plaintext-exposure
   secret_group_name        = "${var.prefix}-example-group"    #checkov:skip=CKV_SECRET_6: does not require high entropy string as is static value
   secret_group_description = "secret group used for examples" #tfsec:ignore:general-secrets-no-plaintext-exposure
+  endpoint_type            = "private"
 }

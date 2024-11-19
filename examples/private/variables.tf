@@ -27,15 +27,3 @@ variable "resource_tags" {
   description = "Optional list of tags to be added to created resources"
   default     = []
 }
-
-variable "existing_sm_instance_guid" {
-  type        = string
-  description = "Existing Secrets Manager GUID. If not provided an new instance will be provisioned"
-  default     = null
-}
-
-variable "existing_sm_instance_region" {
-  type        = string
-  description = "Required if value is passed into var.existing_sm_instance_guid"
-  default     = null
-}
