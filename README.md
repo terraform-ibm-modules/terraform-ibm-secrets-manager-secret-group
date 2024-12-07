@@ -77,6 +77,7 @@ No modules.
 ## Examples
 
 - [ Basic example](examples/basic)
+- [ Private-Only Secret Manager example](examples/private)
 <!-- END EXAMPLES HOOK -->
 
 <!-- BEGIN CONTRIBUTING HOOK -->
