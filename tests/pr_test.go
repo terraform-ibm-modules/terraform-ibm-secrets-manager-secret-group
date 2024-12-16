@@ -99,6 +99,8 @@ func TestPrivateInSchematics(t *testing.T) {
 		{Name: "resource_tags", Value: options.Tags, DataType: "list(string)"},
 		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
+		{Name: "existing_sm_instance_crn", Value: permanentResources["privateOnlySecMgrCRN"], DataType: "string"},
+		{Name: "existing_sm_instance_region", Value: permanentResources["privateOnlySecMgrRegion"], DataType: "string"},
 	}
 
 	err := options.RunSchematicTest()

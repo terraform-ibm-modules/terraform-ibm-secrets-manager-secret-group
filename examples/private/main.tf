@@ -14,16 +14,30 @@ module "resource_group" {
 ## Create prerequisite.  Secrets Manager and Secret Group
 ##################################################################
 
+locals {
+  validate_sm_region_cnd = var.existing_sm_instance_crn != null && var.existing_sm_instance_region == null
+  validate_sm_region_msg = "existing_sm_instance_region must also be set when value given for existing_sm_instance_guid."
+  # tflint-ignore: terraform_unused_declarations
+  validate_sm_region_chk = regex(
+    "^${local.validate_sm_region_msg}$",
+    (!local.validate_sm_region_cnd
+      ? local.validate_sm_region_msg
+  : ""))
+
+  sm_region = var.existing_sm_instance_region == null ? var.region : var.existing_sm_instance_region
+}
+
 module "secrets_manager" {
-  source               = "terraform-ibm-modules/secrets-manager/ibm"
-  version              = "1.18.13"
-  resource_group_id    = module.resource_group.resource_group_id
-  region               = var.region
-  secrets_manager_name = "${var.prefix}-sm"
-  sm_service_plan      = "trial"
-  allowed_network      = "private-only"
-  endpoint_type        = "private"
-  sm_tags              = var.resource_tags
+  source                   = "terraform-ibm-modules/secrets-manager/ibm"
+  version                  = "1.18.13"
+  existing_sm_instance_crn = var.existing_sm_instance_crn
+  resource_group_id        = module.resource_group.resource_group_id
+  region                   = local.sm_region
+  secrets_manager_name     = "${var.prefix}-sm"
+  sm_service_plan          = "trial"
+  allowed_network          = "private-only"
+  endpoint_type            = "private"
+  sm_tags                  = var.resource_tags
 }
 
 ##################################################################
@@ -32,7 +46,7 @@ module "secrets_manager" {
 
 module "secrets_manager_group_acct" {
   source               = "../.."
-  region               = var.region
+  region               = local.sm_region
   secrets_manager_guid = module.secrets_manager.secrets_manager_guid
   #tfsec:ignore:general-secrets-no-plaintext-exposure
   secret_group_name        = "${var.prefix}-example-group"    #checkov:skip=CKV_SECRET_6: does not require high entropy string as is static value
