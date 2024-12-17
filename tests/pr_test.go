@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"testing"
+	//"fmt"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
