@@ -9,6 +9,8 @@
 
 This module creates a secret group in an IBM Cloud Secrets Manager instance. For more information, see [Best practices for organizing secrets and assigning access](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-best-practices-organize-secrets#best-practices-secret-groups).
 
+![Secrets Manager secret group module](./images/sm_secret-group.svg)
+
 ## Usage
 ```hcl
 provider "ibm" {
