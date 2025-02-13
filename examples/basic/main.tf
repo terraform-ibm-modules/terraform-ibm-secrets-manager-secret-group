@@ -20,14 +20,14 @@ module "resource_group" {
 ##################################################################
 
 module "secrets_manager" {
-  count = var.existing_sm_instance_guid != null ? 0 : 1
-  source                   = "terraform-ibm-modules/secrets-manager/ibm"
-  version                  = "1.21.0"
-  secrets_manager_name     = "${var.prefix}-sm-instance"
-  sm_service_plan          = var.sm_service_plan
-  region                   = local.sm_region
-  resource_group_id        = module.resource_group.resource_group_id
-  sm_tags                  = var.resource_tags
+  count                = var.existing_sm_instance_guid != null ? 0 : 1
+  source               = "terraform-ibm-modules/secrets-manager/ibm"
+  version              = "1.21.0"
+  secrets_manager_name = "${var.prefix}-sm-instance"
+  sm_service_plan      = var.sm_service_plan
+  region               = local.sm_region
+  resource_group_id    = module.resource_group.resource_group_id
+  sm_tags              = var.resource_tags
 }
 
 ##################################################################
