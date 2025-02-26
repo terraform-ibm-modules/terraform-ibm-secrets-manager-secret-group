@@ -1,5 +1,5 @@
 locals {
-  sm_guid   = var.existing_sm_instance_guid == null ? ibm_resource_instance.secrets_manager[0].guid : var.existing_sm_instance_guid
+  sm_guid   = var.existing_sm_instance_guid == null ? module.secrets_manager[0].secrets_manager_guid : var.existing_sm_instance_guid
   sm_region = var.existing_sm_instance_region == null ? var.region : var.existing_sm_instance_region
 }
 
@@ -19,17 +19,15 @@ module "resource_group" {
 ## Create prerequisite.  Secrets Manager and Secret Group
 ##################################################################
 
-resource "ibm_resource_instance" "secrets_manager" {
-  count             = var.existing_sm_instance_guid == null ? 1 : 0
-  name              = "${var.prefix}-sm-instance"
-  service           = "secrets-manager"
-  plan              = var.sm_service_plan
-  location          = var.region
-  resource_group_id = module.resource_group.resource_group_id
-  tags              = var.resource_tags
-  timeouts {
-    create = "20m" # Extending provisioning time to 20 minutes
-  }
+module "secrets_manager" {
+  count                = var.existing_sm_instance_guid != null ? 0 : 1
+  source               = "terraform-ibm-modules/secrets-manager/ibm"
+  version              = "1.23.9"
+  secrets_manager_name = "${var.prefix}-sm-instance"
+  sm_service_plan      = var.sm_service_plan
+  region               = local.sm_region
+  resource_group_id    = module.resource_group.resource_group_id
+  sm_tags              = var.resource_tags
 }
 
 ##################################################################
