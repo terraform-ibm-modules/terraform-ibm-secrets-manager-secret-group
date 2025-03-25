@@ -50,7 +50,9 @@ You need the following permissions to run this module.
 
 ### Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_iam_access_groups"></a> [iam\_access\_groups](#module\_iam\_access\_groups) | terraform-ibm-modules/iam-access-group/ibm | 1.4.6 |
 
 ### Resources
 
@@ -62,6 +64,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_access_group_name"></a> [access\_group\_name](#input\_access\_group\_name) | Whether to create an access group for the secrets group. | `string` | `null` | no |
+| <a name="input_access_group_roles"></a> [access\_group\_roles](#input\_access\_group\_roles) | Whether to create an access group for the secrets group. | `list(string)` | `null` | no |
+| <a name="input_access_group_tags"></a> [access\_group\_tags](#input\_access\_group\_tags) | Tags that should be applied to the access group | `list(string)` | `[]` | no |
+| <a name="input_create_access_group"></a> [create\_access\_group](#input\_create\_access\_group) | Whether to create an access group for the secrets group. | `bool` | `true` | no |
 | <a name="input_endpoint_type"></a> [endpoint\_type](#input\_endpoint\_type) | The service endpoint type to communicate with the provided secrets manager instance. Possible values are `public` or `private` | `string` | `"public"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region which the Secret Manager is deployed. | `string` | n/a | yes |
 | <a name="input_secret_group_description"></a> [secret\_group\_description](#input\_secret\_group\_description) | Description of the Secret Group to be created. | `string` | n/a | yes |

@@ -28,4 +28,29 @@ variable "endpoint_type" {
   }
 }
 
+variable "create_access_group" {
+  type        = bool
+  description = "Whether to create an access group for the secrets group."
+  default     = true
+}
+
+variable "access_group_name" {
+  type        = string
+  description = "Whether to create an access group for the secrets group."
+  default     = null
+}
+variable "access_group_roles" {
+  type        = list(string)
+  description = "Whether to create an access group for the secrets group."
+  default     = null
+  validation {
+    error_message = "Invalid role set for the access group, all roles must be one of: Reader, Writer, Manager, SecretsReader, Viewer, Operator, Editor, Administrator, Service Configuration Reader, Key Manager"
+    condition     = (var.access_group_roles != null && length(setintersection(var.access_group_roles, ["Reader", "Writer", "Manager", "SecretsReader", "Viewer", "Operator", "Editor", "Administrator", "Service Configuration Reader", "Key Manager"])) != 0)
+  }
+}
+variable "access_group_tags" {
+  type        = list(string)
+  description = "Tags that should be applied to the access group"
+  default     = []
+}
 ##############################################################################
