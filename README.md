@@ -45,7 +45,7 @@ You need the following permissions to run this module.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.76.0, <2.0.0 |
 
 ### Modules
@@ -64,10 +64,10 @@ You need the following permissions to run this module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_group_name"></a> [access\_group\_name](#input\_access\_group\_name) | Whether to create an access group for the secrets group. | `string` | `null` | no |
-| <a name="input_access_group_roles"></a> [access\_group\_roles](#input\_access\_group\_roles) | Whether to create an access group for the secrets group. | `list(string)` | `null` | no |
-| <a name="input_access_group_tags"></a> [access\_group\_tags](#input\_access\_group\_tags) | Tags that should be applied to the access group | `list(string)` | `[]` | no |
-| <a name="input_create_access_group"></a> [create\_access\_group](#input\_create\_access\_group) | Whether to create an access group for the secrets group. | `bool` | `true` | no |
+| <a name="input_access_group_name"></a> [access\_group\_name](#input\_access\_group\_name) | Name of the access group to create. If null is passed, the name will be set as '{secret\_group\_name}-access-group' | `string` | `null` | no |
+| <a name="input_access_group_roles"></a> [access\_group\_roles](#input\_access\_group\_roles) | Roles to be given to the created access group. | `list(string)` | `null` | no |
+| <a name="input_access_group_tags"></a> [access\_group\_tags](#input\_access\_group\_tags) | Tags that should be applied to the access group. Only applies if create\_access\_group is true. | `list(string)` | `[]` | no |
+| <a name="input_create_access_group"></a> [create\_access\_group](#input\_create\_access\_group) | Whether to create an access group for the secrets group. | `bool` | `false` | no |
 | <a name="input_endpoint_type"></a> [endpoint\_type](#input\_endpoint\_type) | The service endpoint type to communicate with the provided secrets manager instance. Possible values are `public` or `private` | `string` | `"public"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Region which the Secret Manager is deployed. | `string` | n/a | yes |
 | <a name="input_secret_group_description"></a> [secret\_group\_description](#input\_secret\_group\_description) | Description of the Secret Group to be created. | `string` | n/a | yes |

@@ -27,30 +27,33 @@ variable "endpoint_type" {
     error_message = "The specified endpoint_type is not a valid selection!"
   }
 }
-
 variable "create_access_group" {
   type        = bool
   description = "Whether to create an access group for the secrets group."
-  default     = true
+  default     = false
 }
-
 variable "access_group_name" {
   type        = string
-  description = "Whether to create an access group for the secrets group."
+  description = "Name of the access group to create. If null is passed, the name will be set as '{secret_group_name}-access-group'"
   default     = null
 }
 variable "access_group_roles" {
   type        = list(string)
-  description = "Whether to create an access group for the secrets group."
+  description = "Roles to be given to the created access group."
   default     = null
   validation {
     error_message = "Invalid role set for the access group, all roles must be one of: Reader, Writer, Manager, SecretsReader, Viewer, Operator, Editor, Administrator, Service Configuration Reader, Key Manager"
     condition     = (var.access_group_roles != null && length(setintersection(var.access_group_roles, ["Reader", "Writer", "Manager", "SecretsReader", "Viewer", "Operator", "Editor", "Administrator", "Service Configuration Reader", "Key Manager"])) != 0)
   }
+  validation {
+    error_message = "When creating an access group, a list of roles must be passed"
+    condition     = (var.create_access_group && var.access_group_roles != null && length(var.access_group_roles) != 0)
+  }
 }
 variable "access_group_tags" {
   type        = list(string)
-  description = "Tags that should be applied to the access group"
+  description = "Tags that should be applied to the access group. Only applies if create_access_group is true."
   default     = []
 }
+
 ##############################################################################

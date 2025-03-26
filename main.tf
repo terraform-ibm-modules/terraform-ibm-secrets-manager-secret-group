@@ -4,14 +4,6 @@
 # Creates Secret Group within existing Secret Manager instance
 ##############################################################################
 
-locals {
-  # Validation (approach based on https://github.com/hashicorp/terraform/issues/25609#issuecomment-1057614400)
-  # tflint-ignore: terraform_unused_declarations
-  validate_create_access_group = (var.create_access_group && var.access_group_roles == null) ? tobool("When creating an access group, a list of roles must be set") : true
-
-  access_group_name = coalesce(var.access_group_name, "${var.secret_group_name}-access-group")
-}
-
 # Create secret group
 resource "ibm_sm_secret_group" "secret_group" {
   name          = var.secret_group_name
@@ -19,6 +11,10 @@ resource "ibm_sm_secret_group" "secret_group" {
   region        = var.region
   instance_id   = var.secrets_manager_guid
   endpoint_type = var.endpoint_type
+}
+
+locals {
+  access_group_name = coalesce(var.access_group_name, "${var.secret_group_name}-access-group")
 }
 
 # Optionally create a corresponding access group
