@@ -41,4 +41,6 @@ module "secrets_manager_group_acct" {
   #tfsec:ignore:general-secrets-no-plaintext-exposure
   secret_group_name        = "${var.prefix}-example-group"    #checkov:skip=CKV_SECRET_6: does not require high entropy string as is static value
   secret_group_description = "secret group used for examples" #tfsec:ignore:general-secrets-no-plaintext-exposure
+  create_access_group      = true
+  access_group_roles       = ["Operator"]
 }
