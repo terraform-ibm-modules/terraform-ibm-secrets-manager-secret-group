@@ -43,11 +43,11 @@ variable "access_group_roles" {
   default     = null
   validation {
     error_message = "Invalid role set for the access group, all roles must be one of: Reader, Writer, Manager, SecretsReader, Viewer, Operator, Editor, Administrator, Service Configuration Reader, Key Manager"
-    condition     = (var.access_group_roles != null && length(setintersection(var.access_group_roles, ["Reader", "Writer", "Manager", "SecretsReader", "Viewer", "Operator", "Editor", "Administrator", "Service Configuration Reader", "Key Manager"])) != 0)
+    condition     = (var.access_group_roles == null ? true : length(setintersection(var.access_group_roles, ["Reader", "Writer", "Manager", "SecretsReader", "Viewer", "Operator", "Editor", "Administrator", "Service Configuration Reader", "Key Manager"])) != 0)
   }
   validation {
     error_message = "When creating an access group, a list of roles must be passed"
-    condition     = (var.create_access_group && var.access_group_roles != null && length(var.access_group_roles) != 0)
+    condition     = (var.access_group_roles == null ? !var.create_access_group : (var.create_access_group && length(var.access_group_roles) != 0))
   }
 }
 variable "access_group_tags" {
