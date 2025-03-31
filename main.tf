@@ -38,3 +38,7 @@ module "iam_access_groups" {
     }
   }
 }
+
+locals {
+  access_group_id = var.create_access_group ? module.iam_access_groups[0].id : null
+}

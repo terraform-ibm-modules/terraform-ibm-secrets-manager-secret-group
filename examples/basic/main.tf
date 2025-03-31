@@ -34,13 +34,23 @@ module "secrets_manager" {
 ## Example creating secret group
 ##################################################################
 
-module "secrets_manager_group_acct" {
+module "secrets_manager_group_acct1" {
   source               = "../.."
   region               = local.sm_region
   secrets_manager_guid = local.sm_guid
   #tfsec:ignore:general-secrets-no-plaintext-exposure
-  secret_group_name        = "${var.prefix}-example-group"    #checkov:skip=CKV_SECRET_6: does not require high entropy string as is static value
-  secret_group_description = "secret group used for examples" #tfsec:ignore:general-secrets-no-plaintext-exposure
+  secret_group_name        = "${var.prefix}-example-group-1"                               #checkov:skip=CKV_SECRET_6: does not require high entropy string as is static value
+  secret_group_description = "secret group used for examples, has a matching access group" #tfsec:ignore:general-secrets-no-plaintext-exposure
   create_access_group      = true
   access_group_roles       = ["Operator"]
+}
+
+module "secrets_manager_group_acct2" {
+  source               = "../.."
+  region               = local.sm_region
+  secrets_manager_guid = local.sm_guid
+  #tfsec:ignore:general-secrets-no-plaintext-exposure
+  secret_group_name        = "${var.prefix}-example-group-2"  #checkov:skip=CKV_SECRET_6: does not require high entropy string as is static value
+  secret_group_description = "secret group used for examples" #tfsec:ignore:general-secrets-no-plaintext-exposure
+  create_access_group      = false
 }
