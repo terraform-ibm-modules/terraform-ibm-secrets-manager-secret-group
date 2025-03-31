@@ -9,7 +9,7 @@ output "secret_group_id" {
 
 output "access_group_id" {
   description = "ID of the created Access Group"
-  value       = module.iam_access_groups[0].id
+  value       = local.access_group_id
 }
 
 ##############################################################################
