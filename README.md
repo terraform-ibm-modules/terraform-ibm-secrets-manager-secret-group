@@ -78,6 +78,7 @@ You need the following permissions to run this module.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_access_group_id"></a> [access\_group\_id](#output\_access\_group\_id) | ID of the created Access Group |
 | <a name="output_secret_group_id"></a> [secret\_group\_id](#output\_secret\_group\_id) | ID of the created Secret Group |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

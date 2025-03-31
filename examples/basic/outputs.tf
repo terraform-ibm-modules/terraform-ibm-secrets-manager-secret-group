@@ -7,6 +7,10 @@ output "secret_group_id1" {
   value       = module.secrets_manager_group_acct1.secret_group_id
 }
 
+output "access_group_id" {
+  description = "ID of the created Access Group"
+  value       = module.secrets_manager_group_acct1.access_group_id
+}
 
 output "secret_group_id2" {
   description = "ID of the second created Secret Group"
