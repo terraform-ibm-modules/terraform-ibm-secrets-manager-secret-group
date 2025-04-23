@@ -28,16 +28,17 @@ locals {
 }
 
 module "secrets_manager" {
-  source                   = "terraform-ibm-modules/secrets-manager/ibm"
-  version                  = "2.1.1"
-  existing_sm_instance_crn = var.existing_sm_instance_crn
-  resource_group_id        = module.resource_group.resource_group_id
-  region                   = local.sm_region
-  secrets_manager_name     = "${var.prefix}-sm"
-  sm_service_plan          = "trial"
-  allowed_network          = "private-only"
-  endpoint_type            = "private"
-  sm_tags                  = var.resource_tags
+  source                        = "terraform-ibm-modules/secrets-manager/ibm"
+  version                       = "2.1.1"
+  existing_sm_instance_crn      = var.existing_sm_instance_crn
+  resource_group_id             = module.resource_group.resource_group_id
+  region                        = local.sm_region
+  secrets_manager_name          = "${var.prefix}-sm"
+  sm_service_plan               = "trial"
+  allowed_network               = "private-only"
+  endpoint_type                 = "private"
+  sm_tags                       = var.resource_tags
+  skip_iam_authorization_policy = var.skip_iam_authorization_policy
 }
 
 ##################################################################
