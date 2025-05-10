@@ -51,7 +51,7 @@ You need the following permissions to run this module.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iam_access_groups"></a> [iam\_access\_groups](#module\_iam\_access\_groups) | terraform-ibm-modules/iam-access-group/ibm | 1.5.2 |
+| <a name="module_iam_access_groups"></a> [iam\_access\_groups](#module\_iam\_access\_groups) | terraform-ibm-modules/iam-access-group/ibm | 1.5.3 |
 
 ### Resources
 
