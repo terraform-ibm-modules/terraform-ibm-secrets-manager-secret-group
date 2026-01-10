@@ -22,7 +22,7 @@ module "resource_group" {
 module "secrets_manager" {
   count                = var.existing_sm_instance_guid != null ? 0 : 1
   source               = "terraform-ibm-modules/secrets-manager/ibm"
-  version              = "2.12.16"
+  version              = "2.12.17"
   secrets_manager_name = "${var.prefix}-sm-instance"
   sm_service_plan      = var.sm_service_plan
   region               = local.sm_region
