@@ -21,7 +21,7 @@ locals {
 module "iam_access_groups" {
   count             = var.create_access_group ? 1 : 0
   source            = "terraform-ibm-modules/iam-access-group/ibm"
-  version           = "1.6.7"
+  version           = "1.6.8"
   access_group_name = local.access_group_name
   dynamic_rules     = {}
   add_members       = false
