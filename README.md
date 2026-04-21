@@ -13,12 +13,23 @@ This module creates a secret group in an IBM Cloud Secrets Manager instance. For
 
 <!-- BEGIN OVERVIEW HOOK -->
 ## Overview
-* [terraform-ibm-secrets-manager-secret-group](#terraform-ibm-secrets-manager-secret-group)
-* [Examples](./examples)
-:information_source: Ctrl/Cmd+Click or right-click on the Schematics deploy button to open in a new tab
-    * <a href="./examples/basic">Basic example</a> <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=secrets-manager-secret-group-basic-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/tree/main/examples/basic"><img src="https://img.shields.io/badge/Deploy%20with IBM%20Cloud%20Schematics-0f62fe?logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
-    * <a href="./examples/private">Private-Only Secret Manager example</a> <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=secrets-manager-secret-group-private-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/tree/main/examples/private"><img src="https://img.shields.io/badge/Deploy%20with IBM%20Cloud%20Schematics-0f62fe?logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
-* [Contributing](#contributing)
+<ul>
+  <li><a href="#terraform-ibm-secrets-manager-secret-group">terraform-ibm-secrets-manager-secret-group</a></li>
+  <li><a href="./examples">Examples</a>
+    <ul>
+      <li>
+        <a href="./examples/basic">Basic example</a>
+        <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=secrets-manager-secret-group-basic-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/tree/main/examples/basic"><img src="https://img.shields.io/badge/Deploy%20with%20IBM%20Cloud%20Schematics-0f62fe?style=flat&logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
+      </li>
+      <li>
+        <a href="./examples/private">Private-Only Secret Manager example</a>
+        <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=secrets-manager-secret-group-private-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager-secret-group/tree/main/examples/private"><img src="https://img.shields.io/badge/Deploy%20with%20IBM%20Cloud%20Schematics-0f62fe?style=flat&logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
+      </li>
+    </ul>
+    ℹ️ Ctrl/Cmd+Click or right-click on the Schematics deploy button to open in a new tab.
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
 <!-- END OVERVIEW HOOK -->
 
 ## terraform-ibm-secrets-manager-secret-group
@@ -63,7 +74,7 @@ You need the following permissions to run this module.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_iam_access_groups"></a> [iam\_access\_groups](#module\_iam\_access\_groups) | terraform-ibm-modules/iam-access-group/ibm | 1.8.0 |
+| <a name="module_iam_access_groups"></a> [iam\_access\_groups](#module\_iam\_access\_groups) | terraform-ibm-modules/iam-access-group/ibm | 1.8.2 |
 
 ### Resources
 
