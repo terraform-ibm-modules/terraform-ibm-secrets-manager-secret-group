@@ -28,7 +28,7 @@ module "iam_access_groups" {
   policies = {
     sm_policy = {
       roles = var.access_group_roles
-      tags  = var.access_group_tags
+      tags  = var.resource_tags
       resources = [{
         service       = "secrets-manager"
         instance_id   = var.secrets_manager_guid
