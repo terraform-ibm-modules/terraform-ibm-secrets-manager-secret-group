@@ -66,26 +66,26 @@ You need the following permissions to run this module.
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.79.0, < 3.0.0 |
 
 ### Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_iam_access_groups"></a> [iam\_access\_groups](#module\_iam\_access\_groups) | terraform-ibm-modules/iam-access-group/ibm | 1.9.4 |
 
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [ibm_sm_secret_group.secret_group](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/sm_secret_group) | resource |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_access_group_name"></a> [access\_group\_name](#input\_access\_group\_name) | Name of the access group to create. If null is passed, the name will be set as '{secret\_group\_name}-access-group' | `string` | `null` | no |
 | <a name="input_access_group_roles"></a> [access\_group\_roles](#input\_access\_group\_roles) | Roles to be given to the created access group. | `list(string)` | `null` | no |
 | <a name="input_access_group_tags"></a> [access\_group\_tags](#input\_access\_group\_tags) | Tags that should be applied to the access group. Only applies if create\_access\_group is true. | `list(string)` | `[]` | no |
@@ -99,7 +99,7 @@ You need the following permissions to run this module.
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_access_group_id"></a> [access\_group\_id](#output\_access\_group\_id) | ID of the created Access Group |
 | <a name="output_secret_group_id"></a> [secret\_group\_id](#output\_secret\_group\_id) | ID of the created Secret Group |
 | <a name="output_secret_group_name"></a> [secret\_group\_name](#output\_secret\_group\_name) | Name of the created Secret Group |
